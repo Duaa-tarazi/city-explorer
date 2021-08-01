@@ -42,7 +42,7 @@ class App extends React.Component {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand href="#home">City Explorer</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#features">Features</Nav.Link>
@@ -50,8 +50,11 @@ class App extends React.Component {
             </Nav>
           </Container>
         </Navbar>
-
-        <h1>City Explorer</h1>
+<br></br>
+<br></br>
+        <h5>Enter a name of the city you want  🗺️⬇️</h5>
+        <br></br><br></br>
+        
         <Form onSubmit={this.getLocationData}>
           <Row>
             <Col xs={7}>
@@ -76,6 +79,7 @@ class App extends React.Component {
           }
 
         </Row>
+        
       </>
     )
   }
