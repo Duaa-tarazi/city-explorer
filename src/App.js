@@ -59,16 +59,23 @@ class App extends React.Component {
             </Col>
 
             <Col>
-              <Button  type='submit' variant="outline-dark">Get Location</Button>
+              <Button type='submit' variant="outline-dark">Get Location</Button>
 
-            </Col>
+            </Col> 
           </Row>
         </Form>
+        <Row xs={6} md={4}>
 
-        {this.state.displayName}
-        {this.state.showMap &&
-          <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} thumbnail />
-  }
+          {this.state.displayName}
+          
+
+          
+          {this.state.showMap &&
+            <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} thumbnail 
+            />
+          }
+
+        </Row>
       </>
     )
   }
