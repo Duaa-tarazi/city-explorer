@@ -5,6 +5,10 @@ import Image from 'react-bootstrap/Image';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +16,8 @@ class App extends React.Component {
     this.state = {
       display: '',
       lon: '',
-      lat: ''
+      lat: '',
+      showMap: false
 
     }
   }
@@ -47,20 +52,23 @@ class App extends React.Component {
         </Navbar>
 
         <h1>City Explorer</h1>
-        <form onSubmit={this.getLocationData}>
-          <input type='text' placeholder='Enter City' name='city' />
-          <button type='submit'>Get Location</button>
-        </form>
+        <Form onSubmit={this.getLocationData}>
+          <Row>
+            <Col xs={7}>
+              <Form.Control type='text' placeholder="Enter City" name='city' />
+            </Col>
+
+            <Col>
+              <Button  type='submit' variant="outline-dark">Get Location</Button>
+
+            </Col>
+          </Row>
+        </Form>
+
         {this.state.displayName}
-        <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} thumbnail />
-        {/* {<img src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} alt='map'/>} */}
-
-
-
-
-
-
-
+        {this.state.showMap &&
+          <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} thumbnail />
+  }
       </>
     )
   }
