@@ -26,7 +26,7 @@ class App extends React.Component {
     event.preventDefault();
     let cityName = event.target.city.value;
     console.log(cityName);
-    let URL = `https://eu1.locationiq.com/v1/search.php?key=pk.3fda50d4c58c160cd474872dbf430d3a&q=${cityName}&format=json`
+    let URL = `//http://localhost:3000/(/getweather)`;
     let axiosreq = await axios.get(URL);
     this.setState({
       displayName: axiosreq.data[0].display_name,
@@ -62,7 +62,7 @@ class App extends React.Component {
             </Col>
 
             <Col>
-              <Button type='submit' variant="outline-dark">Get Location</Button>
+              <Button type='submit' variant="outline-dark">Сurrent weather and forecast!</Button>
 
             </Col> 
           </Row>
