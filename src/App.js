@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import Image from 'react-bootstrap/Image';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -9,6 +8,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,8 @@ class App extends React.Component {
       display: '',
       lon: '',
       lat: '',
-      showMap: false
+      showMap: false,
+      showCard:false
 
     }
   }
@@ -26,13 +29,14 @@ class App extends React.Component {
     event.preventDefault();
     let cityName = event.target.city.value;
     console.log(cityName);
-    let URL = `//http://localhost:3000/(/getweather)`;
+    let URL = `https://eu1.locationiq.com/v1/search.php?key=pk.3fda50d4c58c160cd474872dbf430d3a&q=${cityName}&format=json`
     let axiosreq = await axios.get(URL);
     this.setState({
       displayName: axiosreq.data[0].display_name,
       lon: axiosreq.data[0].lon,
       lat: axiosreq.data[0].lat,
-      showMap: true
+      showMap: true,
+      showCard:true
     })
   }
 
@@ -50,11 +54,11 @@ class App extends React.Component {
             </Nav>
           </Container>
         </Navbar>
-<br></br>
-<br></br>
+        <br></br>
+        <br></br>
         <h5>Enter a name of the city you want  🗺️⬇️</h5>
         <br></br><br></br>
-        
+
         <Form onSubmit={this.getLocationData}>
           <Row>
             <Col xs={7}>
@@ -62,19 +66,30 @@ class App extends React.Component {
             </Col>
 
             <Col>
-              <Button type='submit' variant="outline-dark">Сurrent weather and forecast!</Button>
+              <Button type='submit' variant="outline-dark">Get Location</Button>
 
-            </Col> 
+            </Col>
           </Row>
         </Form>
-        <Row xs={6} md={4}>
+        <br></br><br></br>
 
-          {this.state.displayName}
-          {this.state.lat }
-          {this.state.lon }
+        {this.state.showCard&&
 
-        </Row>
-        
+        <Card style={{ width: '18rem' }}>
+
+            <Card.Img variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=pk.3fda50d4c58c160cd474872dbf430d3a&center=${this.state.lat},${this.state.lon}`} />
+          <Card.Body>
+            <Card.Title>City:{this.state.displayName}</Card.Title>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>{this.state.displayName}  longitude:<br></br>{this.state.lon}
+            </ListGroupItem>
+            <ListGroupItem>{this.state.displayName}  Latitude:<br></br>{this.state.lat}</ListGroupItem>
+
+          </ListGroup>
+
+        </Card>}
+
       </>
     )
   }
