@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Search from './Search';
 import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Button from 'react-bootstrap/Button';
+// import Form from 'react-bootstrap/Form';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -25,20 +26,19 @@ class App extends React.Component {
     }
   }
 
-  getLocationData = async (event) => {
-    event.preventDefault();
-    let cityName = event.target.city.value;
-    console.log(cityName);
-    let URL = `https://eu1.locationiq.com/v1/search.php?key=pk.3fda50d4c58c160cd474872dbf430d3a&q=${cityName}&format=json`
-    let axiosreq = await axios.get(URL);
-    this.setState({
-      displayName: axiosreq.data[0].display_name,
-      lon: axiosreq.data[0].lon,
-      lat: axiosreq.data[0].lat,
-      showMap: true,
-      showCard:true
-    })
-  }
+  // getLocationData = async (event) => {
+  //   event.preventDefault();
+  //   let  cityName= event.target.city.value;
+  //   let URL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_KEY}}&q=${this.state.cityName}&format=json`
+  //   let axiosreq = await axios.get(URL);
+  //   this.setState({
+  //     displayName: axiosreq.data[0].display_name,
+  //     lon: axiosreq.data[0].lon,
+  //     lat: axiosreq.data[0].lat,
+  //     showMap: true,
+  //     showCard:true
+  //   })
+  // }
 
   render() {
     return (
@@ -58,8 +58,9 @@ class App extends React.Component {
         <br></br>
         <h5>Enter a name of the city you want  🗺️⬇️</h5>
         <br></br><br></br>
+        <Search> </Search>
 
-        <Form onSubmit={this.getLocationData}>
+        {/* <Form onSubmit={this.getLocationData}>
           <Row>
             <Col xs={7}>
               <Form.Control type='text' placeholder="Enter City" name='city' />
@@ -70,7 +71,7 @@ class App extends React.Component {
 
             </Col>
           </Row>
-        </Form>
+        </Form> */}
         <br></br><br></br>
 
         {this.state.showCard&&
