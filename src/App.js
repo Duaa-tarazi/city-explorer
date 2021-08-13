@@ -136,8 +136,8 @@ class App extends React.Component {
     event.preventDefault();
     const city = event.target.city.value;
     const URL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_KEY}&q=${city}&format=json`;
-    const urlServer = `http://localhost:3002/weather?lat=${this.state.lat}&lon=${this.state.lon}&city=${city}`
-    const urlMovies = `http://localhost:3002/movies?city=${city}`;
+    const urlServer = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}&city=${city}`
+    const urlMovies = `${process.env.REACT_APP_SERVER_URL}/movies?city=${city}`;
 
     try {
 

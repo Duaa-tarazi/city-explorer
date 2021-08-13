@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Container, Row, Card } from 'react-bootstrap';
+import { Container,  Card } from 'react-bootstrap';
 import '../App.css';
 class Map extends React.Component {
     render() {
