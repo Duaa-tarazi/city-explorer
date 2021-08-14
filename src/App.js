@@ -105,17 +105,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './components/Map';
 import Weather from './components/Weather';
 // import Movies from './components/Movies';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-
-
-
-
-
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -186,20 +180,11 @@ class App extends React.Component {
     return (
       <>
 
-        <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">City Explorer</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
+        <Header/>
         <br></br>
         <br></br>
         <section className="backgroundColor">
-          {/* <Header/> */}
+          
 
 
           <Form onSubmit={this.getLocationData}>
@@ -230,6 +215,7 @@ class App extends React.Component {
           {/* <Movies showCard={this.state.showCard} movies={this.state.movies} ></Movies> */}
           
         </section>
+        <Footer/>
       </>
     )
   }
